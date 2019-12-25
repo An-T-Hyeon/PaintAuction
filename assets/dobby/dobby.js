@@ -140,30 +140,12 @@ function load(){
         for(i=0;i<sheets.Paints.length;i++){
             tomorrowSum+=parseInt(tomorrowPoint(sheets.Paints[i]["초기값"],sheets.Paints[i]["변화값"]));
         }
-    
-        $("#main-paint").html(`<h1>${main["제목"]}</h1>
-        <div class="row" style="padding-left: 0%;padding-right: 0%;margin-top: 2em;">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                <h3 style="color: blue;">${info["오늘점수"]}</h3>
-                <h4><i class="fa fa-circle" style="color: blue;"></i>&nbsp;${numberWithCommas(todayPoint(
-                    main["초기값"],
-                    main["변화값"]
-                ))}</h4>
-            </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 tomorrow-point">
-                <h3 style="color: red;">${info["내일점수"]}</h3>
-                <h4><i class="fa fa-arrow-up" style="color: red;"></i>&nbsp;${numberWithCommas(tomorrowPoint(
-                    main["초기값"],
-                    main["변화값"]
-                ))}</h4>
-            </div>
-        </div>`);
 
         $("#header2-1").css('background-image',`url(${main["그림url"]})`);
 
         $("#main-paint").html(`
         <div class="mbr-section-btn">
-            <a class="btn display-4" href="#next" style="position: absolute; bottom: 35px; left: 5%; background-color: rgba(80, 80, 80, 0.5); color: white;">
+            <a class="btn display-4" href="#next" style="position: absolute; bottom: 35px; left: 5%; background-color: rgba(80, 80, 80, 0.5); color: white; font-family: COPRGTB;">
                 <span class="mobi-mbri mobi-mbri-cash mbr-iconfont mbr-iconfont-btn"></span>
                 ${info["오늘점수"]}
                 <br>${numberWithCommas(todayPoint(
@@ -171,7 +153,7 @@ function load(){
                     main["변화값"]
                   ))}<br>
             </a>
-            <a class="btn display-4" href="#next" style="position: absolute; bottom: 35px; right: 5%; background-color: rgba(80, 80, 80, 0.5); color: white;">
+            <a class="btn display-4" href="#next" style="position: absolute; bottom: 35px; right: 5%; background-color: rgba(80, 80, 80, 0.5); color: white; font-family: COPRGTB;">
                 <span class="mobi-mbri mobi-mbri-cash mbr-iconfont mbr-iconfont-btn"></span>
                 ${info["내일점수"]}
                 <br>${numberWithCommas(tomorrowPoint(
@@ -187,14 +169,14 @@ function load(){
                 <div class="media-container-row title">
                     <div class="col-12 col-md-8">
                         <div class="mbr-section-btn align-center">
-                            <a class="btn btn-black-outline display-4" href="#next">
+                            <a class="btn btn-black-outline display-4" href="#next" style="font-family: COPRGTB;">
                                 <span class="mobi-mbri mobi-mbri-cash mbr-iconfont mbr-iconfont-btn"></span>
-                                ${"오늘 점수 총합"}
+                                ${info["오늘점수총합"]}
                                 <br>${todaySum.toLocaleString()}<br>
                             </a>
-                            <a class="btn btn-black-outline display-4" href="#next">
+                            <a class="btn btn-black-outline display-4" href="#next" style="font-family: COPRGTB;">
                                 <span class="mobi-mbri mobi-mbri-cash mbr-iconfont mbr-iconfont-btn"></span>
-                                ${"내일 점수 총합"}
+                                ${info["내일점수총합"]}
                                 <br>${tomorrowSum.toLocaleString()}<br>
                             </a>
                         </div>
@@ -226,8 +208,8 @@ function load(){
             <div href="#lb-gallery1-3" data-slide-to="${index-1}" data-toggle="modal">
                 <img src="${url}" alt="" title="" style="height: 18rem;object-fit: cover;">
                 <span class="icon-focus"></span>
-                <span class="mbr-gallery-title mbr-fonts-style display-7" style="text-align: right;">Tomorrow : ${numberWithCommas(tmrwpoint)}</span>
-                <span class="mbr-gallery-title mbr-fonts-style display-7">Today : ${numberWithCommas(point)}</span>
+                <span class="mbr-gallery-title mbr-fonts-style display-7" style="text-align: right; font-family: COPRGTB;">Tomorrow : ${numberWithCommas(tmrwpoint)}</span>
+                <span class="mbr-gallery-title mbr-fonts-style display-7" style="font-family: COPRGTB;">Today : ${numberWithCommas(point)}</span>
             </div>
         </div>`;
 
