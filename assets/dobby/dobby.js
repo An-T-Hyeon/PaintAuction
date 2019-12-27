@@ -16,7 +16,8 @@ $("#btn-refresh").click(function(){
   /**************************************************/
   // Sheet
   
-async function readSheet(sheetId){
+async function readSheet(sheetId)
+{
     let sheet = 1;
     sheets = {};
   
@@ -42,7 +43,8 @@ async function readSheet(sheetId){
   
         sheet += 1;
       }
-    } catch (error) {};
+    } 
+    catch (error) {};
   
     return sheets;
 };
