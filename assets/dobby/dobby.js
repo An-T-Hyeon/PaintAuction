@@ -42,7 +42,7 @@ async function readSheet(sheetId){
   
         sheet += 1;
       }
-    } catch (error) {}
+    } catch (error) {};
   
     return sheets;
 };
@@ -53,9 +53,16 @@ async function readSheet(sheetId){
   
 function remainingTime() {
     let end = new Date();
-    end.setHours(24,0,0,0);
+    end.setHours(12,0,0,0);
     var now = new Date().getTime();
     var distance = end - now;
+
+    if(distance<0){
+        let end = new Date();
+        end.setHours(36,0,0,0);
+        var now = new Date().getTime();
+        var distance = end - now;
+    }
   
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -68,6 +75,7 @@ function remainingTime() {
 };
   
 function remainingDate() {
+    
     let tmp_info = new Date().toLocaleString("en-US", { timeZone: "Asia/Seoul" });
     let tmp_date = new Date(tmp_info);
     tmp_date.setDate(1);
@@ -77,8 +85,29 @@ function remainingDate() {
     const last_date = tmp_date.getDate();
     const today_date = new Date(tmp_info).getDate();
     
-    return last_date - today_date;
+    let end = new Date();
+    end.setHours(12,0,0,0);
+    var now = new Date().getTime();
+    var distance = end - now;
+    if(distance<0){
+        return last_date - today_date -1;
+    }
+    else{  
+        return last_date - today_date;
+    }
 };
+
+function remainingDateDisplay(){
+    let tmp_info = new Date().toLocaleString("en-US", { timeZone: "Asia/Seoul" });
+    let tmp_date = new Date(tmp_info);
+    tmp_date.setDate(1);
+    tmp_date.setMonth(tmp_date.getMonth() + 1);
+    tmp_date.setDate(0);
+  
+    const last_date = tmp_date.getDate();
+    const today_date = new Date(tmp_info).getDate();
+    return last_date - today_date;
+}
   
 function getDate(){
     let tmp_main = new Date().toLocaleString("en-US", {
@@ -114,7 +143,7 @@ function numberWithCommas(x) {
 // updateTime
 function updateTime(){
     // update time
-    $("#elapsed-date").text(remainingDate());
+    $("#elapsed-date").text(remainingDateDisplay());
     $("#elapsed-time").text(remainingTime());
   
     setTimeout(updateTime, 1000);
